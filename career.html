@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Goals - Kirsten Prinsen</title>
+    <style>
+        :root {
+            --olive-green: #556B2F;
+            --soft-pink: #FFB6C1;
+            --background-color: #FAFAFA;
+            --text-color: #333333;
+            --accent-green: #98AB83;
+            --accent-pink: #F8C8DC;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', Georgia, serif;
+            background: url('images/green.background.png') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .leaf-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 5C20 5 15 15 15 25C15 35 25 45 30 45C35 45 45 35 45 25C45 15 40 5 30 5Z' fill='%23556B2F' fill-opacity='0.2'/%3E%3C/svg%3E");
+            background-size: 60px 60px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--olive-green), var(--accent-green));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        nav {
+            background: var(--olive-green);
+            padding: 1rem;
+            width: 100%;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        .career-intro {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .roadmap {
+            position: relative;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .roadmap::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-green);
+            transform: translateX(-50%);
+        }
+
+        .goal-section {
+            background: linear-gradient(to right, white, rgba(248, 200, 220, 0.1));
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            position: relative;
+            border-left: 4px solid var(--accent-pink);
+        }
+
+        .goal-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20c0-5 5-10 10-10s10 5 10 10-5 10-10 10-10-5-10-10z' fill='%23F8C8DC' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background-size: 40px 40px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .goal-section::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--accent-pink);
+            border-radius: 50%;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .goal-section h2 {
+            color: var(--olive-green);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .goal-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .goal-list li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .goal-list li::before {
+            content: "🌿";
+            position: absolute;
+            left: 0;
+        }
+
+        .leaf-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 30c0-10 10-20 20-20s20 10 20 20-10 20-20 20-20-10-20-20zM0 30C0 20 10 10 20 10s20 10 20 20-10 20-20 20S0 40 0 30z' fill='%23556B2F' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .content {
+                padding: 1rem;
+            }
+
+            .roadmap::before {
+                left: 20px;
+            }
+
+            .goal-section {
+                margin-left: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="leaf-pattern"></div>
+    <div class="leaf-background"></div>
+    <header class="header">
+        <h1>Career Goals</h1>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="hobbies.html">Hobbies</a></li>
+                <li><a href="career.html">Career</a></li>
+                <li><a href="discover.html">Discover</a></li>
+                <li><a href="game.html">Game</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section class="career-intro">
+            <h2>Career Interest</h2>
+            <p>I've always wanted my career to reflect both ambition and purpose. For me, success isn't just about titles or income—it's about having direction, making an impact, and building a life I'm proud of. My interest in finance started early, but it deepened when I took my first accounting course and realized how much I enjoy the structure, clarity, and problem-solving it offers. These experiences helped shape the goals I'm working toward today.</p>
+        </section>
+
+        <div class="roadmap">
+            <section class="goal-section">
+                <h2>🎯 Short-Term Goals</h2>
+                <ul class="goal-list">
+                    <li>Graduate in May 2028 with a BBA in Finance and a minor in Accounting from the University of Minnesota Duluth.</li>
+                    <li>Secure an entry-level position in finance—ideally as a financial analyst or accountant—where I can apply what I've learned and continue growing professionally.</li>
+                    <li>Build strong relationships with mentors and colleagues, and continue developing technical skills in financial analysis, reporting, and strategic planning.</li>
+                    <li>Stay open to learning, especially in areas like accounting systems, budgeting, and operational finance.</li>
+                </ul>
+                <p>These goals are about building a strong foundation—academically, professionally, and personally. I want to enter the workforce with confidence and clarity, knowing I've prepared myself well.</p>
+            </section>
+
+            <section class="goal-section">
+                <h2>🚀 Long-Term Goals</h2>
+                <ul class="goal-list">
+                    <li>Work my way up over the next 10–15 years to become a Chief Financial Officer (CFO) or hold a senior leadership role in financial strategy.</li>
+                    <li>Own a home and live in New York City, where I can be part of a fast-paced, dynamic environment that challenges and inspires me.</li>
+                    <li>Continue growing as a leader, using my skills to support ethical decision-making, smart planning, and team collaboration.</li>
+                </ul>
+                <p>I chose these goals because I've always been drawn to the energy of NYC and the idea of working in an office where I feel successful, capable, and respected. I want to do something meaningful with my life—not just professionally, but personally. Having a clear direction gives me purpose, and that's what drives me every day.</p>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

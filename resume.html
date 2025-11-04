@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Kirsten Prinsen</title>
+    <style>
+        :root {
+            --olive-green: #556B2F;
+            --soft-pink: #FFB6C1;
+            --background-color: #FAFAFA;
+            --text-color: #333333;
+            --accent-green: #98AB83;
+            --accent-pink: #F8C8DC;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', Georgia, serif;
+            background: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--olive-green), var(--accent-green));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        nav {
+            background: var(--olive-green);
+            padding: 1rem;
+            width: 100%;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .resume-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .leaf-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20c0-5 5-10 10-10s10 5 10 10-5 10-10 10-10-5-10-10z' fill='%23556B2F' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(to right, white, rgba(248, 200, 220, 0.1));
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-pink);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20c0-5 5-10 10-10s10 5 10 10-5 10-10 10-10-5-10-10z' fill='%23F8C8DC' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background-size: 40px 40px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .section h2 {
+            color: var(--olive-green);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .experience-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-item h3 {
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .role {
+            font-weight: bold;
+            color: var(--olive-green);
+        }
+
+        .experience-item .date-location {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .skills-list li::before {
+            content: "•";
+            color: var(--accent-green);
+            position: absolute;
+            left: 0;
+        }
+
+        .download-section {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .download-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--olive-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .download-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(85, 107, 47, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .resume-container {
+                padding: 1rem;
+            }
+
+            .section {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Resume</h1>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="hobbies.html">Hobbies</a></li>
+                <li><a href="career.html">Career</a></li>
+                <li><a href="discover.html">Discover</a></li>
+                <li><a href="game.html">Game</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="resume-container">
+        <div class="contact-info">
+            <h1>Kirsten Prinsen</h1>
+            <p>785-551-3121 | kirstenprinsen09@gmail.com | Duluth, MN</p>
+        </div>
+
+        <section class="section">
+            <h2>Summary</h2>
+            <p>Motivated and detail-oriented Finance undergraduate, pursuing a BBA with a strong foundation in accounting principles and financial analysis. Recognized for reliability, initiative, and clear communication, consistently demonstrating accuracy, effective time management, and collaborative problem-solving in academic and work settings.</p>
+        </section>
+
+        <section class="section">
+            <h2>Education</h2>
+            <div class="experience-item">
+                <h3>University of Minnesota Duluth</h3>
+                <div class="role">BBA, Finance | Expected May 2028</div>
+                <p>Awarded Merit Scholarship for academic achievement</p>
+            </div>
+            <div class="experience-item">
+                <h3>Saint Cloud State University</h3>
+                <div class="role">AA, Liberal Arts & Sciences | May 2025</div>
+                <p>Graduated Magna Cum Laude</p>
+                <p>Dean's List Fall 2023 & Spring 2025</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Work Experience</h2>
+            <div class="experience-item">
+                <h3>Pretzelmaker</h3>
+                <div class="role">Shift Leader</div>
+                <div class="date-location">01/2023 - 07/2025 | Saint Cloud, Minnesota</div>
+                <ul class="skills-list">
+                    <li>Managed financial tasks and collaborated closely with the store manager to develop and implement a new training program and operational checklists, enhancing onboarding and team performance.</li>
+                    <li>Delivered excellent customer service, and built strong coworker relationships to foster collaboration and drive consistent performance across shifts.</li>
+                    <li>Promoted to shift lead before age 16 after starting in an entry-level role, quickly becoming a key contributor to daily operations, team guidance, and a positive, inclusive work environment.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>Dunkin' Donuts</h3>
+                <div class="role">Cashier & Barista</div>
+                <div class="date-location">07/2024 - 11/2024 | Saint Cloud, Minnesota</div>
+                <ul class="skills-list">
+                    <li>Managed high-volume transactions with speed and accuracy, demonstrating strong attention to detail, and reliability in handling cash and digital payments.</li>
+                    <li>Provided friendly, consistent service in a fast-paced environment while enhancing communication, problem-solving, and time management through daily customer and team interactions.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Skills</h2>
+            <ul class="skills-list">
+                <li>Strong analytical and problem-solving abilities</li>
+                <li>Detail-oriented with a focus on financial accuracy</li>
+                <li>Proficient in Microsoft Excel, Google Sheets, and basic data organization</li>
+                <li>Basic understanding of financial statements and accounting principles</li>
+                <li>Ethical judgment and professionalism in handling sensitive data</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Extracurricular Activities</h2>
+            <div class="experience-item">
+                <h3>Bizdog's Council</h3>
+                <div class="date-location">08/2025 - Present</div>
+                <p>Currently serving as secretary in the BizDog council to help organize events, promote leadership, and strengthen living-learning community engagement.</p>
+            </div>
+            <div class="experience-item">
+                <h3>Women In Business</h3>
+                <div class="date-location">08/2025 - Present</div>
+                <p>Attending Women in Business meetings to explore career paths, build connections, and learn from industry professionals.</p>
+            </div>
+        </section>
+
+        <div class="download-section">
+            <a href="files/Kirsten Resume (4).pdf" class="download-button" download>Download PDF Version</a>
+        </div>
+    </main>
+</body>
+</html>
