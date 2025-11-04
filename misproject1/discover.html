@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Me - Kirsten Prinsen</title>
+    <style>
+        :root {
+            --olive-green: #556B2F;
+            --soft-pink: #FFB6C1;
+            --background-color: #FAFAFA;
+            --text-color: #333333;
+            --accent-green: #98AB83;
+            --accent-pink: #F8C8DC;
+        }
+
+        body {
+            font-family: 'Crimson Text', Georgia, serif;
+            background: url('images/pink.background.png') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .leaf-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 5C20 5 15 15 15 25C15 35 25 45 30 45C35 45 45 35 45 25C45 15 40 5 30 5Z' fill='%23556B2F' fill-opacity='0.2'/%3E%3C/svg%3E");
+            background-size: 60px 60px;
+            --background-color: #FAFAFA;
+            --text-color: #333333;
+            --accent-green: #98AB83;
+            --accent-pink: #F8C8DC;
+        }
+
+        body {
+            background: url('images/pink.background.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .leaf-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 5C20 5 15 15 15 25C15 35 25 45 30 45C35 45 45 35 45 25C45 15 40 5 30 5Z' fill='%23556B2F' fill-opacity='0.2'/%3E%3C/svg%3E");
+            background-size: 60px 60px;
+        }
+            --background-color: #FAFAFA;
+            --text-color: #333333;
+            --accent-green: #98AB83;
+            --accent-pink: #F8C8DC;
+            --light-green: rgba(152, 171, 131, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Crimson Text', Georgia, serif;
+            background: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .leaf-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 40c0-15 15-30 30-30s30 15 30 30-15 30-30 30-30-15-30-30zM0 40C0 25 15 10 30 10s30 15 30 30-15 30-30 30S0 55 0 40z' fill='%23556B2F' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--olive-green), var(--accent-green));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav {
+            background: var(--olive-green);
+            padding: 1rem;
+            width: 100%;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .welcome-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 3rem;
+        }
+
+        .story-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 3rem;
+        }
+
+        .interests-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 3rem;
+        }
+
+        .contact-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            color: var(--olive-green);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .interest-item {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .interest-item::before {
+            content: "🌿";
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+        }
+
+        .email-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 2rem;
+            background: var(--olive-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .email-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(85, 107, 47, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .content {
+                padding: 0 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="leaf-pattern"></div>
+    <header class="header">
+        <h1>Discover My Journey</h1>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="hobbies.html">Hobbies</a></li>
+                <li><a href="career.html">Career</a></li>
+                <li><a href="discover.html">Discover</a></li>
+                <li><a href="game.html">Game</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section class="welcome-section">
+            <h2>Welcome</h2>
+            <p>Hi there—thanks for stopping by. I created this page to share more than just the basics. Whether you're a professor, peer, or someone curious about my journey, I hope this gives you a clearer sense of who I am and what's shaped me.</p>
+        </section>
+
+        <section class="story-section">
+            <h2>My Story</h2>
+            <p>My story is rooted in movement and meaning. Growing up in a military family, I moved seven times before I turned eighteen. Each place brought new schools, new friends, and a new version of "home." Through all that change, two things stayed constant: my family's support and the role of the church in my life. Faith has always been a grounding force for me—something that helped me find community wherever we landed and guided how I treat others.</p>
+        </section>
+
+        <section class="interests-section">
+            <h2>What I Love Outside the Classroom</h2>
+            <div class="interest-item">
+                <strong>Spending time with family</strong> — One of my favorite rituals is Friday night pizza and movie night with my family—it's our way of staying connected and unwinding together. No matter how busy things get, that time reminds me of what matters most and keeps me grounded.
+            </div>
+            <div class="interest-item">
+                <strong>Campus engagement</strong> — I stay actively involved in campus life through leadership and community-building roles. As Secretary of the BizDog Council, I help coordinate events and keep our group aligned. I'm also a member of the Healthcare Management Club and Women in Business, where I connect with peers who share my drive for growth, inclusion, and professional development.
+            </div>
+            <div class="interest-item">
+                <strong>Language expansion</strong> — I'm currently learning American Sign Language (ASL) to broaden how I communicate and connect with others. It's a personal challenge that reflects my commitment to inclusion, growth, and lifelong learning.
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <h2>Let's Connect</h2>
+            <p>Have any questions or want to connect? Feel free to reach out. I'm always open to thoughtful conversations, shared projects, or just swapping ideas.</p>
+            <a href="mailto:kirstenprinsen09@gmail.com" class="email-link">Send me an email</a>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Hobbies - Kirsten Prinsen</title>
+    <style>
+        :root {
+            --earthy-brown: #8B4513;
+            --warm-tan: #D2B48C;
+            --light-tan: #F5DEB3;
+            --dark-brown: #654321;
+            --cream: #FFF8DC;
+            --warm-white: #FEFEFE;
+            --text-color: #2F2F2F;
+            --accent-gold: #DAA520;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', Georgia, serif;
+            background: linear-gradient(135deg, var(--light-tan), var(--cream));
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .texture-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.08;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M50 25c-10 0-20 5-20 15s10 20 20 20 20-10 20-20-10-15-20-15zm0 35c-8 0-15-4-15-10s7-10 15-10 15 4 15 10-7 10-15 10z' fill='%238B4513' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background-size: 100px 100px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--earthy-brown), var(--warm-tan));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(139, 69, 19, 0.3);
+        }
+
+        nav {
+            background: var(--dark-brown);
+            padding: 1rem;
+            width: 100%;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .content {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        .hobby-section {
+            background: var(--warm-white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 8px 30px rgba(139, 69, 19, 0.15);
+            border: 3px solid var(--warm-tan);
+            position: relative;
+        }
+
+        .hobby-section::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, var(--earthy-brown), var(--warm-tan), var(--light-tan), var(--earthy-brown));
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .hobby-card {
+            background: var(--warm-white);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 25px rgba(139, 69, 19, 0.12);
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            border-left: 6px solid var(--accent-gold);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 35px rgba(139, 69, 19, 0.2);
+        }
+
+        .hobby-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cpath d='M75 37c-12 0-24 6-24 18s12 24 24 24 24-12 24-24-12-18-24-18zm0 30c-8 0-16-4-16-12s8-12 16-12 16 4 16 12-8 12-16 12z' fill='%23DAA520' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            transform: rotate(45deg);
+        }
+
+        .hobby-icon {
+            font-size: 2.5rem;
+            color: var(--earthy-brown);
+            background: var(--light-tan);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+            border: 3px solid var(--warm-tan);
+        }
+
+        .hobby-content {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hobby-content h2 {
+            color: var(--earthy-brown);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .hobby-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-color);
+            text-align: justify;
+            margin-bottom: 1rem;
+        }
+
+        .hobby-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .hobby-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-left: auto;
+            position: relative;
+            z-index: 1;
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--warm-tan);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .content {
+                padding: 1rem;
+            }
+
+            .hobby-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hobby-image {
+                margin: 1rem auto 0;
+            }
+
+            .hobby-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="texture-background"></div>
+    <header class="header">
+        <h1>My Hobbies</h1>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="hobbies.html">Hobbies</a></li>
+                <li><a href="career.html">Career</a></li>
+                <li><a href="discover.html">Discover</a></li>
+                <li><a href="game.html">Game</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content">
+        <div class="hobby-section">
+            <div class="hobby-card">
+                <div class="hobby-icon">🧵</div>
+                <div class="hobby-content">
+                    <h2>Hand Embroidery</h2>
+                    <p>My interest in embroidery started with my great-grandma. She used to do it, and even though I never learned directly from her, something about it stuck with me. I'm completely self-taught, and over time it's become one of my favorite creative outlets. I'll stitch just about anything I can print a design for—hand towels, tote bags, you name it. I like the freedom to try a little bit of everything.</p>
+                    <p>One of my favorite pieces I've made is a hand-embroidered portrait of my dachshund on a towel. In my opinion, it actually looks a lot like him, in my opinion anyway. I also stitched a lobster onto a tote bag once, and it turned out surprisingly well. I love how embroidery demands my full attention. It pulls me away from screens and gives me this temporary sense of productivity—like I'm doing something useful with my time. It's a small thing, but it really helps me feel grounded.</p>
+                    <p>Embroidery is important to me because it taps into a creative side I don't always get to express. I don't have a lot of other artistic hobbies, and sometimes I struggle with feeling like I don't have any standout talents. But when I'm stitching, I feel like I'm building something beautiful with my own hands—and that means a lot.</p>
+                </div>
+                <img src="images/hadnembroidery.hobby.png" alt="Hand embroidery illustration" class="hobby-image">
+            </div>
+
+            <div class="hobby-card">
+                <div class="hobby-icon">🎬</div>
+                <div class="hobby-content">
+                    <h2>Movie Watching</h2>
+                    <p>I can get into almost any genre of film—as long as it's not horror. What usually draws me in is a specific actor or actress, though sometimes it's just a gut feeling. I tend to know within the first fifteen minutes whether I'll love a movie, and when I do, I really love it. I don't casually enjoy films—I become obsessed. I'll watch them in every free moment I have just to get to the end, and then I'll rewatch them to catch every detail I missed.</p>
+                    <p>My favorite movie right now is The Maze Runner, and my favorite actor is Dylan O'Brien. I also love Jennifer Lawrence in The Hunger Games. Clearly, I have a soft spot for dystopian films. There's something about them that always strikes a chord—especially the way they challenge authority and encourage you to think critically about the world around you. They remind me that no leader should be followed blindly, and that questioning systems is often necessary.</p>
+                    <p>Movie watching is important to me because it started with family. My mom and I used to plan movie nights for our family every Friday, complete with pizza and a new film to explore. Those nights created a tradition that stuck, and now movies are a way for me to reflect, connect, and escape. Whether it's a deep story or just a fun watch, movies give me something to dive into—and when I find one I love, I dive in all the way.</p>
+                </div>
+                <img src="images/movies.hobby.png" alt="Movie collection illustration" class="hobby-image">
+            </div>
+
+            <div class="hobby-card">
+                <div class="hobby-icon">🤝</div>
+                <div class="hobby-content">
+                    <h2>Volunteering</h2>
+                    <p>Volunteering has been part of my life for as long as I can remember. I've been involved with my church since I was about ten, and it's always felt natural—whether through my own efforts or alongside my parents. It's more than just something I do; it's part of who I am.</p>
+                    <p>Over the years, I've helped with highway cleanups, Halloween events like Trunk or Treat, and Spring to Life celebrations that bring kids together to enjoy Easter and connect with their community. One of the most impactful experiences was a mission trip to Europe, where I helped run a Vacation Bible School for kids. I also help out on Sundays wherever I'm needed—whether it's in the tech area, the coffee shop, or behind the scenes. Most of the time, I volunteer with my family, which makes the experience even more meaningful.</p>
+                    <p>What I enjoy most are the small moments—like seeing a parent light up as their child wins a prize at one of our events, or watching kids laugh and play during a church celebration. Those little glimpses of joy remind me why I do this. Volunteering helps me feel personally connected to my church and my community. It's also a reflection of my faith. As a Christian, I believe we're called not just to stay in our own circles, but to reach out and connect others to Christ through love, service, and compassion.</p>
+                </div>
+                <img src="images/volunteer.hobby.png" alt="Volunteering illustration" class="hobby-image">
+            </div>
+        </div>
+    </main>
+</body>
+</html>
