@@ -5,471 +5,560 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Coffee Shop Catch Game</title>
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+    --spring-pink: #FFE4E1;
+    --spring-mint: #E0FFE0;
+    --spring-lavender: #F0E6FF;
+    --spring-peach: #FFE5CC;
+    --spring-yellow: #FFFACD;
+    --spring-blue: #E6F3FF;
+    --spring-cream: #FFFEF7;
+    --text-color: #4A4A4A;
+    --border-color: #D4D4D4;
+    --hover-color: #FFF0F5;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
 
 body {
-  font-family: 'Arial', sans-serif;
-  background: url('images/coffebean.png') repeat;
-  background-size: 100px 100px;
-  overflow: hidden;
-  cursor: none;
+    font-family: 'Crimson Text', Georgia, serif;
+    background: linear-gradient(135deg, var(--spring-cream) 0%, var(--spring-yellow) 50%, var(--spring-blue) 100%);
+    overflow: hidden;
+    cursor: none;
+    color: var(--text-color);
 }
-
 
 /* NAV BAR */
 .nav-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: rgba(139, 69, 19, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 15px 20px;
-  z-index: 1000;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, var(--spring-pink), var(--spring-lavender));
+    backdrop-filter: blur(10px);
+    padding: 15px 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(255, 182, 193, 0.3);
+    margin-top: 1rem;
 }
-
 
 .nav-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-
 
 .nav-title {
-  color: #FFF8DC;
-  font-size: 24px;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    color: var(--text-color);
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
 }
-
 
 .nav-link {
-  background: #FFF8DC;
-  color: #8B4513;
-  padding: 10px 20px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background: var(--spring-cream);
+    color: var(--text-color);
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 2px solid var(--border-color);
 }
-
 
 .nav-link:hover {
-  background: #FFE4B5;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background: var(--hover-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 182, 193, 0.4);
 }
-
 
 /* GAME CONTAINER */
 .game-container {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(to bottom, #F5F5DC 0%, #FFF8DC 30%, #F0E68C 100%);
-  overflow: hidden;
-  padding-top: 80px;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--spring-cream) 0%, var(--spring-yellow) 50%, var(--spring-blue) 100%);
+    overflow: hidden;
+    padding-top: 120px;
 }
-
 
 /* BACKGROUND DECORATIONS */
-.coffee-shop-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 15% 15%, rgba(255, 248, 220, 0.4) 0%, transparent 40%),
-              radial-gradient(circle at 85% 85%, rgba(245, 222, 179, 0.4) 0%, transparent 40%),
-              linear-gradient(45deg, transparent 20%, rgba(255, 248, 220, 0.2) 50%, transparent 80%);
-  z-index: 1;
+.spring-shop-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 15% 15%, rgba(255, 248, 220, 0.4) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(245, 222, 179, 0.4) 0%, transparent 40%),
+                linear-gradient(45deg, transparent 20%, rgba(255, 248, 220, 0.2) 50%, transparent 80%);
+    z-index: 1;
 }
 
-
-.coffee-shop-decorations {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  pointer-events: none;
+.floating-petal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
 }
 
-
-.coffee-bean {
-  position: absolute;
-  width: 30px;
-  height: 40px;
-  background-image: url('coffeebean.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.2;
-  animation: float 8s ease-in-out infinite;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+.petal {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50% 0;
+    opacity: 0.1;
+    animation: float 25s infinite linear;
 }
-.coffee-bean:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
-.coffee-bean:nth-child(2) { top: 40%; right: 15%; animation-delay: 2s; }
-.coffee-bean:nth-child(3) { top: 60%; left: 20%; animation-delay: 4s; }
-.coffee-bean:nth-child(4) { top: 30%; right: 30%; animation-delay: 6s; }
 
+.petal-1 {
+    background: var(--spring-pink);
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.petal-2 {
+    background: var(--spring-mint);
+    top: 20%;
+    right: 15%;
+    animation-delay: 8s;
+}
+
+.petal-3 {
+    background: var(--spring-lavender);
+    bottom: 30%;
+    left: 20%;
+    animation-delay: 16s;
+}
+
+.petal-4 {
+    background: var(--spring-peach);
+    bottom: 20%;
+    right: 10%;
+    animation-delay: 24s;
+}
+
+.petal-5 {
+    background: var(--spring-yellow);
+    top: 50%;
+    left: 5%;
+    animation-delay: 12s;
+}
+
+.petal-6 {
+    background: var(--spring-blue);
+    top: 40%;
+    right: 5%;
+    animation-delay: 20s;
+}
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(5deg); }
+    0% { 
+        transform: translateY(0px) rotate(0deg) scale(1); 
+        opacity: 0.1;
+    }
+    25% { 
+        transform: translateY(-20px) rotate(90deg) scale(1.2); 
+        opacity: 0.15;
+    }
+    50% { 
+        transform: translateY(-40px) rotate(180deg) scale(1); 
+        opacity: 0.1;
+    }
+    75% { 
+        transform: translateY(-20px) rotate(270deg) scale(1.2); 
+        opacity: 0.15;
+    }
+    100% { 
+        transform: translateY(0px) rotate(360deg) scale(1); 
+        opacity: 0.1;
+    }
 }
 
+.spring-decorations {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.spring-flower {
+    position: absolute;
+    width: 30px;
+    height: 40px;
+    background: var(--spring-pink);
+    border-radius: 50% 0;
+    opacity: 0.2;
+    animation: float 8s ease-in-out infinite;
+    filter: drop-shadow(0 2px 8px rgba(255, 182, 193, 0.3));
+}
+.spring-flower:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+.spring-flower:nth-child(2) { top: 40%; right: 15%; animation-delay: 2s; }
+.spring-flower:nth-child(3) { top: 60%; left: 20%; animation-delay: 4s; }
+.spring-flower:nth-child(4) { top: 30%; right: 30%; animation-delay: 6s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+}
 
 /* SCORE + HEALTH UI */
 .score {
-  position: absolute;
-  top: 100px;
-  right: 20px;
-  background: linear-gradient(135deg, #FFF8DC, #FFE4B5);
-  padding: 15px 25px;
-  border-radius: 25px;
-  font-size: 24px;
-  font-weight: bold;
-  color: #8B4513;
-  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
-  border: 3px solid #D2691E;
-  z-index: 100;
+    position: absolute;
+    top: 150px;
+    right: 20px;
+    background: var(--spring-cream);
+    padding: 15px 25px;
+    border-radius: 25px;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-color);
+    box-shadow: 0 8px 25px rgba(255, 182, 193, 0.3);
+    border: 3px solid var(--spring-pink);
+    z-index: 100;
 }
-
 
 .health-container {
-  position: absolute;
-  top: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(135deg, #FFF8DC, #FFE4B5);
-  padding: 12px 20px;
-  border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
-  border: 3px solid #D2691E;
-  z-index: 100;
-  min-width: 200px;
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--spring-cream);
+    padding: 12px 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(255, 182, 193, 0.3);
+    border: 3px solid var(--spring-mint);
+    z-index: 100;
+    min-width: 200px;
 }
-
 
 .health-label {
-  color: #8B4513;
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 8px;
-  text-align: center;
+    color: var(--text-color);
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: center;
 }
-
 
 .health-bar {
-  width: 100%;
-  height: 20px;
-  background-color: #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 2px solid #8B4513;
-  position: relative;
+    width: 100%;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+    position: relative;
 }
-
 
 .health-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #ff4444 0%, #ffaa44 50%, #44ff44 100%);
-  border-radius: 8px;
-  transition: width 0.3s ease;
-  position: relative;
+    height: 100%;
+    background: linear-gradient(90deg, #ff4444 0%, #ffaa44 50%, #44ff44 100%);
+    border-radius: 8px;
+    transition: width 0.3s ease;
+    position: relative;
 }
-
 
 .health-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #8B4513;
-  font-weight: bold;
-  font-size: 12px;
-  text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 12px;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
 }
-
 
 /* LEVEL INDICATOR */
 .level-indicator {
-  position: absolute;
-  top: 200px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(135deg, #FFF8DC, #FFE4B5);
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #8B4513;
-  z-index: 100;
-  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
-  border: 3px solid #D2691E;
+    position: absolute;
+    top: 250px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--spring-cream);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text-color);
+    z-index: 100;
+    box-shadow: 0 8px 25px rgba(255, 182, 193, 0.3);
+    border: 3px solid var(--spring-lavender);
 }
-
 
 /* INSTRUCTIONS */
 .instructions {
-  position: absolute;
-  top: 200px;
-  left: 20px;
-  background: linear-gradient(135deg, #FFF8DC, #FFE4B5);
-  padding: 20px;
-  border-radius: 20px;
-  font-size: 16px;
-  color: #8B4513;
-  max-width: 320px;
-  z-index: 100;
-  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
-  border: 3px solid #D2691E;
-  font-weight: 500;
+    position: absolute;
+    top: 250px;
+    left: 20px;
+    background: var(--spring-cream);
+    padding: 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    color: var(--text-color);
+    max-width: 320px;
+    z-index: 100;
+    box-shadow: 0 8px 25px rgba(255, 182, 193, 0.3);
+    border: 3px solid var(--spring-yellow);
+    font-weight: 500;
 }
-
 
 /* PIXEL MUG DESIGN */
 .mug {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 80px;
-  background-image: url('images/pixelmug.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 10;
-  transition: left 0.1s ease;
-  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3));
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 80px;
+    background-image: url('images/pixelmug.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 10;
+    transition: left 0.1s ease;
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3));
 }
-
 
 /* Steam animation */
 .steam-line {
-  position: absolute;
-  bottom: 80px;
-  left: 50%;
-  width: 4px;
-  height: 40px;
-  border-radius: 2px;
-  background: rgba(255, 255, 255, 0.8);
-  opacity: 0.6;
-  animation: steam 3s ease-in-out infinite;
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    width: 4px;
+    height: 40px;
+    border-radius: 2px;
+    background: var(--spring-pink);
+    opacity: 0.6;
+    animation: steam 3s ease-in-out infinite;
 }
-
 
 .steam-line:nth-child(1) {
-  margin-left: -20px;
-  animation-delay: 0s;
+    margin-left: -20px;
+    animation-delay: 0s;
 }
 .steam-line:nth-child(2) {
-  margin-left: 0px;
-  animation-delay: 1s;
+    margin-left: 0px;
+    animation-delay: 1s;
 }
 .steam-line:nth-child(3) {
-  margin-left: 20px;
-  animation-delay: 2s;
+    margin-left: 20px;
+    animation-delay: 2s;
 }
-
 
 @keyframes steam {
-  0% {
-    transform: translateY(0) scaleX(1);
-    opacity: 0.4;
-  }
-  50% {
-    transform: translateY(-20px) scaleX(1.2);
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateY(-40px) scaleX(0.8);
-    opacity: 0;
-  }
+    0% {
+        transform: translateY(0) scaleX(1);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translateY(-20px) scaleX(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-40px) scaleX(0.8);
+        opacity: 0;
+    }
 }
-
 
 /* FALLING ITEMS */
 .falling-item {
-  position: absolute;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  z-index: 10;
-  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4));
-  transition: transform 0.1s ease;
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    z-index: 10;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4));
+    transition: transform 0.1s ease;
 }
-
 
 .good-item {
-  background: linear-gradient(135deg, #FFB6C1, #FFA0B4);
-  box-shadow:
-    0 4px 15px rgba(255, 182, 193, 0.5),
-    inset 0 1px 3px rgba(255, 255, 255, 0.4);
-  border: 2px solid #FF69B4;
-  animation: gentleBounce 1.5s ease-in-out infinite;
+    background: linear-gradient(135deg, var(--spring-pink), var(--spring-lavender));
+    box-shadow:
+        0 4px 15px rgba(255, 182, 193, 0.5),
+        inset 0 1px 3px rgba(255, 255, 255, 0.4);
+    border: 2px solid var(--spring-pink);
+    animation: gentleBounce 1.5s ease-in-out infinite;
 }
-
 
 .bad-item {
-  background: linear-gradient(135deg, #8B4513, #654321);
-  box-shadow:
-    0 4px 15px rgba(139, 69, 19, 0.5),
-    inset 0 1px 3px rgba(0, 0, 0, 0.4);
-  border: 2px solid #4A2C2A;
-  animation: gentleWiggle 0.8s ease-in-out infinite;
+    background: linear-gradient(135deg, var(--text-color), #666);
+    box-shadow:
+        0 4px 15px rgba(74, 74, 74, 0.5),
+        inset 0 1px 3px rgba(0, 0, 0, 0.4);
+    border: 2px solid #555;
+    animation: gentleWiggle 0.8s ease-in-out infinite;
 }
-
 
 @keyframes gentleBounce {
-  0%, 100% { transform: translateY(0px) scale(1); }
-  50% { transform: translateY(-3px) scale(1.02); }
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-3px) scale(1.02); }
 }
-
 
 @keyframes gentleWiggle {
-  0%, 100% { transform: rotate(0deg) scale(1); }
-  25% { transform: rotate(1deg) scale(1.01); }
-  75% { transform: rotate(-1deg) scale(1.01); }
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(1deg) scale(1.01); }
+    75% { transform: rotate(-1deg) scale(1.01); }
 }
-
 
 /* PARTICLES */
 .particle {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: #FFD700;
-  border-radius: 50%;
-  pointer-events: none;
-  animation: particle 0.6s ease-out forwards;
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--spring-yellow);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: particle 0.6s ease-out forwards;
 }
-
 
 @keyframes particle {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0) translateY(-50px);
-  }
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) translateY(-50px);
+    }
 }
-
 
 /* GAME OVER SCREEN */
 .game-over {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.95);
-  padding: 40px;
-  border-radius: 20px;
-  text-align: center;
-  font-size: 24px;
-  color: #8B4513;
-  display: none;
-  z-index: 200;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--spring-cream);
+    padding: 40px;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 24px;
+    color: var(--text-color);
+    display: none;
+    z-index: 200;
+    box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+    border: 3px solid var(--spring-pink);
 }
-
 
 .restart-btn {
-  background: #8B4513;
-  color: white;
-  border: none;
-  padding: 15px 30px;
-  border-radius: 25px;
-  font-size: 18px;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: all 0.3s ease;
+    background: linear-gradient(135deg, var(--spring-pink), var(--spring-lavender));
+    color: var(--text-color);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    border: 2px solid var(--border-color);
 }
 
-
 .restart-btn:hover {
-  background: #A0522D;
-  transform: scale(1.05);
+    background: linear-gradient(135deg, var(--spring-lavender), var(--spring-pink));
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .instructions {
+        font-size: 14px;
+        max-width: 250px;
+    }
+    
+    .score {
+        font-size: 18px;
+        padding: 10px 15px;
+    }
+    
+    .health-container {
+        min-width: 150px;
+        padding: 8px 15px;
+    }
 }
 </style>
 </head>
 <body>
-  <div class="nav-bar">
+<div class="floating-petal">
+    <div class="petal petal-1"></div>
+    <div class="petal petal-2"></div>
+    <div class="petal petal-3"></div>
+    <div class="petal petal-4"></div>
+    <div class="petal petal-5"></div>
+    <div class="petal petal-6"></div>
+</div>
+
+<div class="nav-bar">
     <div class="nav-content">
-      <div class="nav-title">☕ Coffee Shop Catch</div>
-      <a href="index.html" class="nav-link">🏠 Back to Home</a>
+        <div class="nav-title">🌸 Coffee Shop Catch</div>
+        <a href="index.html" class="nav-link">🏠 Back to Home</a>
     </div>
-  </div>
+</div>
 
-
-  <div class="game-container">
-    <div class="coffee-shop-bg"></div>
-    <div class="coffee-shop-decorations">
-      <div class="coffee-bean"></div>
-      <div class="coffee-bean"></div>
-      <div class="coffee-bean"></div>
-      <div class="coffee-bean"></div>
+<div class="game-container">
+    <div class="spring-shop-bg"></div>
+    <div class="spring-decorations">
+        <div class="spring-flower"></div>
+        <div class="spring-flower"></div>
+        <div class="spring-flower"></div>
+        <div class="spring-flower"></div>
     </div>
-
 
     <div class="instructions">
-      <strong>🍩 Catch the Donuts!</strong><br>
-      Move your mouse to catch delicious donuts!<br>
-      Avoid the flies (brown) 🪰<br>
-      Catch the donuts (pink) 🍩
+        <strong>🍩 Catch the Donuts!</strong><br>
+        Move your mouse to catch delicious donuts!<br>
+        Avoid the flies (dark) 🪰<br>
+        Catch the donuts (pastel) 🍩
     </div>
-
 
     <div class="level-indicator" id="levelIndicator">Level 1</div>
     <div class="score" id="score">Score: 0</div>
 
-
     <div class="health-container">
-      <div class="health-label">❤️ Health</div>
-      <div class="health-bar">
-        <div class="health-fill" id="healthFill" style="width: 100%;"></div>
-        <div class="health-text" id="healthText">100/100</div>
-      </div>
+        <div class="health-label">❤️ Health</div>
+        <div class="health-bar">
+            <div class="health-fill" id="healthFill" style="width: 100%;"></div>
+            <div class="health-text" id="healthText">100/100</div>
+        </div>
     </div>
 
+    <!-- PIXEL MUG DESIGN -->
+    <div class="mug" id="mug"></div>
+    <div class="steam-line"></div>
+    <div class="steam-line"></div>
+    <div class="steam-line"></div>
+    
+    <!-- GAME OVER SCREEN -->
+    <div class="game-over" id="gameOver">
+        <h2>Game Over!</h2>
+        <p>Final Score: <span id="finalScore">0</span></p>
+        <button class="restart-btn" onclick="restartGame()">Play Again</button>
+    </div>
+</div>
 
-     <!-- PIXEL MUG DESIGN -->
-     <div class="mug" id="mug"></div>
-     <div class="steam-line"></div>
-     <div class="steam-line"></div>
-     <div class="steam-line"></div>
-     
-     <!-- GAME OVER SCREEN -->
-     <div class="game-over" id="gameOver">
-       <h2>Game Over!</h2>
-       <p>Final Score: <span id="finalScore">0</span></p>
-       <button class="restart-btn" onclick="restartGame()">Play Again</button>
-     </div>
-  </div>
-
-
-  <script>
-    class CoffeeShopGame {
-      constructor() {
+<script>
+class CoffeeShopGame {
+    constructor() {
         this.canvas = document.querySelector('.game-container');
         this.mug = document.getElementById('mug');
         this.scoreElement = document.getElementById('score');
@@ -491,30 +580,248 @@ body {
        
         this.goodItems = ['🍩', '🍩', '🍩', '🍩', '🍩', '🍩', '🍩', '🍩']; // All donuts!
         this.badItems = ['🪰', '🪰', '🪰', '🪰', '🪰', '🪰', '🪰', '🪰']; // All flies!
-       
+        
+        // Audio system
+        this.audioContext = null;
+        this.gameMusicGain = null;
+        this.gameOverMusicGain = null;
+        this.sfxGain = null;
+        this.backgroundMusicOscillator = null;
+        this.gameOverMusicOscillator = null;
+        this.musicType = 'upbeat'; // 'upbeat' or 'sad'
+        
         this.init();
-      }
+    }
      
-      init() {
+    init() {
         this.setupEventListeners();
+        this.setupAudio();
+        // Don't start game immediately, wait for user interaction to resume audio
         this.startGame();
-      }
-     
-      setupEventListeners() {
-        document.addEventListener('mousemove', (e) => {
-          if (this.gameRunning) {
-            const containerRect = this.canvas.getBoundingClientRect();
-            const mouseX = e.clientX - containerRect.left;
-            const mugWidth = 100;
-            const maxX = containerRect.width - mugWidth;
-           
-            let newX = Math.max(0, Math.min(mouseX - mugWidth/2, maxX));
-            this.mug.style.left = newX + 'px';
-          }
+    }
+    
+    setupAudio() {
+        // Initialize Web Audio Context
+        this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        
+        // Create gain nodes for volume control
+        this.gameMusicGain = this.audioContext.createGain();
+        this.gameOverMusicGain = this.audioContext.createGain();
+        this.sfxGain = this.audioContext.createGain();
+        
+        // Connect gain nodes to audio context destination
+        this.gameMusicGain.connect(this.audioContext.destination);
+        this.gameOverMusicGain.connect(this.audioContext.destination);
+        this.sfxGain.connect(this.audioContext.destination);
+        
+        // Set initial volumes
+        this.gameMusicGain.gain.setValueAtTime(0.3, this.audioContext.currentTime);
+        this.gameOverMusicGain.gain.setValueAtTime(0.3, this.audioContext.currentTime);
+        this.sfxGain.gain.setValueAtTime(0.5, this.audioContext.currentTime);
+    }
+    
+    startUpbeatMusic() {
+        if (!this.audioContext) return;
+        
+        // Stop any existing music first
+        this.stopAllMusic();
+        this.musicType = 'upbeat';
+        
+        // Ensure gain node is properly set up
+        this.gameMusicGain.gain.setValueAtTime(0.3, this.audioContext.currentTime);
+        
+        const oscillator = this.audioContext.createOscillator();
+        const gainNode = this.gameMusicGain;
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        oscillator.type = 'triangle';
+        
+        // Create a pleasant melody pattern
+        const melody = [
+            440, 523, 587, 659, 587, 523, 440, 392, // C5-C6-D6-E6-D6-C6-C5-B5
+            440, 523, 659, 784, 659, 587, 523, 440  // C5-C6-E6-G6-E6-D6-C6-C5
+        ];
+        
+        let noteIndex = 0;
+        const playNextNote = () => {
+            if (this.musicType !== 'upbeat' || !this.gameRunning) {
+                try {
+                    oscillator.stop();
+                    oscillator.disconnect();
+                } catch (e) {
+                    // Oscillator might already be stopped
+                }
+                return;
+            }
+            
+            const frequency = melody[noteIndex];
+            oscillator.frequency.setValueAtTime(frequency, this.audioContext.currentTime);
+            
+            noteIndex = (noteIndex + 1) % melody.length;
+            
+            // Schedule next note
+            setTimeout(playNextNote, 200);
+        };
+        
+        playNextNote();
+        oscillator.start();
+        this.backgroundMusicOscillator = oscillator;
+    }
+    
+    startSadMusic() {
+        if (!this.audioContext) return;
+        
+        // Ensure ALL music is completely stopped first
+        this.stopAllMusic();
+        
+        // Give a brief pause to ensure complete audio cleanup
+        setTimeout(() => {
+            this.musicType = 'sad';
+            
+            const oscillator = this.audioContext.createOscillator();
+            const gainNode = this.gameOverMusicGain;
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(this.audioContext.destination);
+            oscillator.type = 'sawtooth';
+            
+            // Create a sad melody pattern
+            const sadMelody = [
+                440, 392, 349, 329, 349, 392, 440, 392, // C5-B5-A5-G5-A5-B5-C5-B5
+                392, 349, 329, 293, 329, 349, 392, 349  // B5-A5-G5-F5-G5-A5-B5-A5
+            ];
+            
+            let noteIndex = 0;
+            const playNextNote = () => {
+                if (this.musicType !== 'sad') {
+                    try {
+                        oscillator.stop();
+                        oscillator.disconnect();
+                    } catch (e) {
+                        // Oscillator might already be stopped
+                    }
+                    return;
+                }
+                
+                const frequency = sadMelody[noteIndex];
+                oscillator.frequency.setValueAtTime(frequency, this.audioContext.currentTime);
+                
+                noteIndex = (noteIndex + 1) % sadMelody.length;
+                
+                // Schedule next note
+                setTimeout(playNextNote, 400);
+            };
+            
+            playNextNote();
+            oscillator.start();
+            this.gameOverMusicOscillator = oscillator;
+        }, 100); // Small delay to ensure clean switching
+    }
+    
+    stopAllMusic() {
+        this.musicType = 'none';
+        
+        // Stop upbeat music completely
+        if (this.backgroundMusicOscillator) {
+            try {
+                this.backgroundMusicOscillator.stop();
+                this.backgroundMusicOscillator.disconnect();
+            } catch (e) {
+                // Oscillator might already be stopped
+            }
+            this.backgroundMusicOscillator = null;
+        }
+        
+        // Stop sad music completely
+        if (this.gameOverMusicOscillator) {
+            try {
+                this.gameOverMusicOscillator.stop();
+                this.gameOverMusicOscillator.disconnect();
+            } catch (e) {
+                // Oscillator might already be stopped
+            }
+            this.gameOverMusicOscillator = null;
+        }
+        
+        // Reset gain nodes to prevent lingering audio
+        if (this.gameMusicGain) {
+            this.gameMusicGain.gain.setValueAtTime(0, this.audioContext.currentTime);
+        }
+        if (this.gameOverMusicGain) {
+            this.gameOverMusicGain.gain.setValueAtTime(0, this.audioContext.currentTime);
+        }
+    }
+    
+    playNegativeSFX() {
+        if (!this.audioContext) return;
+        
+        const oscillator = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(this.sfxGain);
+        
+        oscillator.type = 'square';
+        
+        // Create a negative sound: descending frequencies
+        oscillator.frequency.setValueAtTime(300, this.audioContext.currentTime);
+        oscillator.frequency.linearRampToValueAtTime(150, this.audioContext.currentTime + 0.3);
+        
+        // Fade out quickly
+        gainNode.gain.setValueAtTime(0.3, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.3);
+        
+        oscillator.start();
+        oscillator.stop(this.audioContext.currentTime + 0.3);
+    }
+    
+    playGameOverSFX() {
+        if (!this.audioContext) return;
+        
+        // Play a few descending notes
+        const frequencies = [440, 392, 349, 293];
+        frequencies.forEach((freq, index) => {
+            setTimeout(() => {
+                const oscillator = this.audioContext.createOscillator();
+                const gainNode = this.audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(this.sfxGain);
+                
+                oscillator.type = 'sawtooth';
+                oscillator.frequency.setValueAtTime(freq, this.audioContext.currentTime);
+                
+                gainNode.gain.setValueAtTime(0.2, this.audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.5);
+                
+                oscillator.start();
+                oscillator.stop(this.audioContext.currentTime + 0.5);
+            }, index * 200);
         });
-      }
+    }
+    
+    resumeAudioContext() {
+        if (this.audioContext && this.audioContext.state === 'suspended') {
+            this.audioContext.resume();
+        }
+    }
      
-      startGame() {
+    setupEventListeners() {
+        document.addEventListener('mousemove', (e) => {
+            if (this.gameRunning) {
+                const containerRect = this.canvas.getBoundingClientRect();
+                const mouseX = e.clientX - containerRect.left;
+                const mugWidth = 100;
+                const maxX = containerRect.width - mugWidth; // Allow cup to reach all the way to the edge
+                
+                let newX = Math.max(0, Math.min(mouseX - mugWidth/2, maxX));
+                this.mug.style.left = newX + 'px';
+            }
+        });
+    }
+     
+    startGame() {
         this.gameRunning = true;
         this.score = 0;
         this.level = 1;
@@ -523,6 +830,9 @@ body {
         this.fallSpeed = 1.5;
         this.badItemChance = 0.15;
         this.fallingItems = [];
+        
+        this.resumeAudioContext();
+        this.startUpbeatMusic();
        
         this.updateScore();
         this.updateLevel();
@@ -531,9 +841,9 @@ body {
        
         this.spawnItems();
         this.gameLoop();
-      }
+    }
      
-      spawnItems() {
+    spawnItems() {
         if (!this.gameRunning) return;
        
         const isBad = Math.random() < this.badItemChance;
@@ -548,17 +858,17 @@ body {
        
         this.canvas.appendChild(fallingItem);
         this.fallingItems.push({
-          element: fallingItem,
-          isBad: isBad,
-          x: parseInt(fallingItem.style.left),
-          y: -50,
-          speed: this.fallSpeed + Math.random() * 1
+            element: fallingItem,
+            isBad: isBad,
+            x: parseInt(fallingItem.style.left),
+            y: -50,
+            speed: this.fallSpeed + Math.random() * 1
         });
        
         setTimeout(() => this.spawnItems(), this.spawnRate);
-      }
+    }
      
-      gameLoop() {
+    gameLoop() {
         if (!this.gameRunning) return;
        
         this.updateFallingItems();
@@ -566,157 +876,183 @@ body {
         this.updateLevel();
        
         requestAnimationFrame(() => this.gameLoop());
-      }
+    }
      
-      updateFallingItems() {
+    updateFallingItems() {
         this.fallingItems.forEach((item, index) => {
-          item.y += item.speed;
-          item.element.style.top = item.y + 'px';
+            item.y += item.speed;
+            item.element.style.top = item.y + 'px';
          
-          // Remove items that fall off screen
-          if (item.y > window.innerHeight + 50) {
-            if (!item.isBad) {
-              // Missed a donut - lose health
-              this.decreaseHealth(15);
+            // Remove items that fall off screen
+            if (item.y > window.innerHeight + 50) {
+                if (!item.isBad) {
+                    // Missed a donut - lose health
+                    this.decreaseHealth(15);
+                    this.playNegativeSFX();
+                }
+               
+                if (item.element.parentNode) {
+                    item.element.parentNode.removeChild(item.element);
+                }
+                this.fallingItems.splice(index, 1);
             }
-           
-            if (item.element.parentNode) {
-              item.element.parentNode.removeChild(item.element);
-            }
-            this.fallingItems.splice(index, 1);
-          }
         });
-      }
+    }
      
-      checkCollisions() {
+    checkCollisions() {
         const mugRect = this.mug.getBoundingClientRect();
        
         this.fallingItems.forEach((item, index) => {
-          const itemRect = item.element.getBoundingClientRect();
+            const itemRect = item.element.getBoundingClientRect();
          
-          // Check collision between mug and item
-          if (itemRect.bottom >= mugRect.top &&
-              itemRect.top <= mugRect.bottom &&
-              itemRect.left < mugRect.right &&
-              itemRect.right > mugRect.left) {
+            // Check collision between mug and item
+            if (itemRect.bottom >= mugRect.top &&
+                itemRect.top <= mugRect.bottom &&
+                itemRect.left < mugRect.right &&
+                itemRect.right > mugRect.left) {
            
-            if (item.isBad) {
-              // Caught a fly - lose health
-              this.decreaseHealth(20);
-              this.createParticles(itemRect.left + 25, itemRect.top + 25, '#FF6B6B');
-            } else {
-              // Caught a donut - gain points
-              this.score += 10;
-              this.createParticles(itemRect.left + 25, itemRect.top + 25, '#FFB6C1');
+                if (item.isBad) {
+                    // Caught a fly - lose health
+                    this.decreaseHealth(20);
+                    this.createParticles(itemRect.left + 25, itemRect.top + 25, '#FF6B6B');
+                    this.playNegativeSFX();
+                } else {
+                    // Caught a donut - gain points
+                    this.score += 10;
+                    this.createParticles(itemRect.left + 25, itemRect.top + 25, '#FFE4E1');
+                }
+           
+                // Remove item
+                if (item.element.parentNode) {
+                    item.element.parentNode.removeChild(item.element);
+                }
+                this.fallingItems.splice(index, 1);
+           
+                this.updateScore();
             }
-           
-            // Remove item
-            if (item.element.parentNode) {
-              item.element.parentNode.removeChild(item.element);
-            }
-            this.fallingItems.splice(index, 1);
-           
-            this.updateScore();
-          }
         });
-      }
+    }
      
-      createParticles(x, y, color) {
+    createParticles(x, y, color) {
         for (let i = 0; i < 8; i++) {
-          const particle = document.createElement('div');
-          particle.className = 'particle';
-          particle.style.left = x + 'px';
-          particle.style.top = y + 'px';
-          particle.style.background = color;
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            particle.style.background = color;
          
-          this.canvas.appendChild(particle);
+            this.canvas.appendChild(particle);
          
-          setTimeout(() => {
-            if (particle.parentNode) {
-              particle.parentNode.removeChild(particle);
-            }
-          }, 600);
+            setTimeout(() => {
+                if (particle.parentNode) {
+                    particle.parentNode.removeChild(particle);
+                }
+            }, 600);
         }
-      }
+    }
      
-      updateScore() {
+    updateScore() {
         this.scoreElement.textContent = `Score: ${this.score}`;
-      }
+    }
      
-      updateHealth() {
+    updateHealth() {
         const healthPercentage = (this.health / this.maxHealth) * 100;
         this.healthFill.style.width = healthPercentage + '%';
         this.healthText.textContent = `${this.health}/${this.maxHealth}`;
        
         // Change health bar color based on health level
         if (healthPercentage > 60) {
-          this.healthFill.style.background = 'linear-gradient(90deg, #44ff44 0%, #88ff88 100%)';
+            this.healthFill.style.background = 'linear-gradient(90deg, #44ff44 0%, #88ff88 100%)';
         } else if (healthPercentage > 30) {
-          this.healthFill.style.background = 'linear-gradient(90deg, #ffaa44 0%, #ffcc66 100%)';
+            this.healthFill.style.background = 'linear-gradient(90deg, #ffaa44 0%, #ffcc66 100%)';
         } else {
-          this.healthFill.style.background = 'linear-gradient(90deg, #ff4444 0%, #ff6666 100%)';
+            this.healthFill.style.background = 'linear-gradient(90deg, #ff4444 0%, #ff6666 100%)';
         }
-      }
+    }
      
-      decreaseHealth(amount) {
+    decreaseHealth(amount) {
         this.health = Math.max(0, this.health - amount);
         this.updateHealth();
        
         // Add visual feedback for health loss
         this.healthFill.style.transform = 'scale(1.05)';
         setTimeout(() => {
-          this.healthFill.style.transform = 'scale(1)';
+            this.healthFill.style.transform = 'scale(1)';
         }, 200);
        
         // Check if game should end
         if (this.health <= 0) {
-          this.gameOver();
+            this.gameOver();
         }
-      }
+    }
      
-      updateLevel() {
+    updateLevel() {
         const newLevel = Math.floor(this.score / 50) + 1;
         if (newLevel > this.level) {
-          this.level = newLevel;
-          this.levelIndicator.textContent = `Level ${this.level}`;
+            this.level = newLevel;
+            this.levelIndicator.textContent = `Level ${this.level}`;
          
-          // Increase difficulty more gradually
-          this.spawnRate = Math.max(1500, this.spawnRate - 150);
-          this.fallSpeed = Math.min(4, this.fallSpeed + 0.3);
-          this.badItemChance = Math.min(0.4, this.badItemChance + 0.03);
+            // Increase difficulty more gradually
+            this.spawnRate = Math.max(1500, this.spawnRate - 150);
+            this.fallSpeed = Math.min(4, this.fallSpeed + 0.3);
+            this.badItemChance = Math.min(0.4, this.badItemChance + 0.03);
         }
-      }
+    }
      
-      gameOver() {
+    gameOver() {
         this.gameRunning = false;
         this.finalScoreElement.textContent = this.score;
         this.gameOverElement.style.display = 'block';
+        
+        // Play game over audio
+        this.stopAllMusic();
+        this.startSadMusic();
+        this.playGameOverSFX();
        
         // Clear all falling items
         this.fallingItems.forEach(item => {
-          if (item.element.parentNode) {
-            item.element.parentNode.removeChild(item.element);
-          }
+            if (item.element.parentNode) {
+                item.element.parentNode.removeChild(item.element);
+            }
         });
         this.fallingItems = [];
-      }
     }
-   
-    // Initialize game
-    let game;
-   
-    function restartGame() {
-      if (game) {
+}
+
+// Initialize game
+let game;
+
+function restartGame() {
+    if (game) {
         game.startGame();
-      } else {
+    } else {
         game = new CoffeeShopGame();
-      }
     }
-   
-    // Start the game when page loads
-    window.addEventListener('load', () => {
-      game = new CoffeeShopGame();
-    });
-  </script>
+}
+
+// Add click event to restart button to ensure audio context is resumed
+document.addEventListener('DOMContentLoaded', () => {
+    const restartBtn = document.querySelector('.restart-btn');
+    if (restartBtn) {
+        restartBtn.addEventListener('click', () => {
+            if (game) {
+                game.resumeAudioContext();
+            }
+        });
+    }
+});
+
+// Start the game when page loads
+window.addEventListener('load', () => {
+    game = new CoffeeShopGame();
+});
+
+// Resume audio context on first user interaction (required by browsers)
+document.addEventListener('click', () => {
+    if (game) {
+        game.resumeAudioContext();
+    }
+}, { once: true });
+</script>
 </body>
 </html>

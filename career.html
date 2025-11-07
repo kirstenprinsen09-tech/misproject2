@@ -3,56 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Career Goals - Kirsten Prinsen</title>
+    <title>Career Interests - Kirsten Prinsen</title>
     <style>
         :root {
-            --olive-green: #556B2F;
-            --soft-pink: #FFB6C1;
-            --background-color: #FAFAFA;
-            --text-color: #333333;
-            --accent-green: #98AB83;
-            --accent-pink: #F8C8DC;
+            --museum-beige: #F5F1E8;
+            --museum-cream: #FDFCF8;
+            --museum-light-beige: #F8F5F0;
+            --museum-olive: #8B9D83;
+            --museum-dark-olive: #6B7C5A;
+            --museum-text: #4A4A4A;
+            --museum-border: #D4C7B8;
+            --museum-hover: #E8E1D4;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: all 0.3s ease;
         }
 
         body {
-            font-family: 'Crimson Text', Georgia, serif;
-            background: url('images/green.background.png') no-repeat center center fixed;
-            background-size: cover;
-            color: var(--text-color);
-            line-height: 1.6;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, var(--museum-cream) 0%, var(--museum-beige) 50%, var(--museum-light-beige) 100%);
+            color: var(--museum-text);
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
         }
 
-        .leaf-pattern {
+        body::before {
+            content: '';
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(139, 157, 131, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 157, 131, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(212, 199, 184, 0.02) 0%, transparent 50%);
             pointer-events: none;
             z-index: -1;
-            opacity: 0.1;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 5C20 5 15 15 15 25C15 35 25 45 30 45C35 45 45 35 45 25C45 15 40 5 30 5Z' fill='%23556B2F' fill-opacity='0.2'/%3E%3C/svg%3E");
-            background-size: 60px 60px;
         }
 
         .header {
-            background: linear-gradient(135deg, var(--olive-green), var(--accent-green));
-            color: white;
-            padding: 2rem 0;
+            background: linear-gradient(135deg, var(--museum-cream), var(--museum-beige));
+            color: var(--museum-text);
+            padding: 2.5rem 0;
             text-align: center;
+            box-shadow: 0 6px 25px rgba(139, 157, 131, 0.15);
+            border-bottom: 3px solid var(--museum-olive);
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--museum-olive), transparent);
+        }
+
+        .header h1 {
+            font-size: 3.2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: var(--museum-dark-olive);
+            text-shadow: 1px 1px 2px rgba(139, 157, 131, 0.2);
         }
 
         nav {
-            background: var(--olive-green);
-            padding: 1rem;
+            background: var(--museum-light-beige);
+            padding: 1.2rem;
             width: 100%;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 20px rgba(139, 157, 131, 0.12);
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--museum-border);
         }
 
         .nav-links {
@@ -63,119 +95,167 @@
         }
 
         .nav-links a {
-            color: white;
+            color: var(--museum-text);
             text-decoration: none;
             font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
+            padding: 0.9rem 1.8rem;
+            border-radius: 4px;
+            transition: all 0.4s ease;
+            background: var(--museum-cream);
+            border: 1px solid var(--museum-border);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            letter-spacing: 0.02em;
         }
 
         .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--museum-hover);
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 157, 131, 0.2);
+            border-color: var(--museum-olive);
+            color: var(--museum-dark-olive);
         }
 
         .content {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 2rem;
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 2rem;
         }
 
-        .career-intro {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            margin-bottom: 2rem;
-        }
-
-        .roadmap {
+        .intro-section {
+            background: var(--museum-cream);
+            padding: 3.5rem;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(139, 157, 131, 0.12);
+            margin-bottom: 3rem;
+            border: 1px solid var(--museum-border);
             position: relative;
-            padding: 2rem;
-            margin: 3rem 0;
         }
 
-        .roadmap::before {
+        .intro-section::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 50%;
-            width: 4px;
-            height: 100%;
-            background: var(--accent-green);
-            transform: translateX(-50%);
-        }
-
-        .goal-section {
-            background: linear-gradient(to right, white, rgba(248, 200, 220, 0.1));
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            margin-bottom: 2rem;
-            position: relative;
-            border-left: 4px solid var(--accent-pink);
-        }
-
-        .goal-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20c0-5 5-10 10-10s10 5 10 10-5 10-10 10-10-5-10-10z' fill='%23F8C8DC' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
-            background-size: 40px 40px;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .goal-section::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: var(--accent-pink);
-            border-radius: 50%;
-            left: -10px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .goal-section h2 {
-            color: var(--olive-green);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .goal-list {
-            list-style: none;
-            margin-top: 1rem;
-        }
-
-        .goal-list li {
-            margin-bottom: 1rem;
-            padding-left: 2rem;
-            position: relative;
-        }
-
-        .goal-list li::before {
-            content: "🌿";
-            position: absolute;
             left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--museum-olive), var(--museum-dark-olive));
+            border-radius: 8px 8px 0 0;
         }
 
-        .leaf-background {
-            position: fixed;
+        .intro-section h2 {
+            color: var(--museum-dark-olive);
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            font-weight: 600;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            letter-spacing: 0.02em;
+        }
+
+        .intro-section p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--museum-text);
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        .career-opportunities {
+            display: grid;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .opportunity-card {
+            background: var(--museum-cream);
+            border-radius: 8px;
+            padding: 3.5rem;
+            box-shadow: 0 8px 30px rgba(139, 157, 131, 0.12);
+            position: relative;
+            border: 1px solid var(--museum-border);
+        }
+
+        .opportunity-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(139, 157, 131, 0.18);
+        }
+
+        .opportunity-card::before {
+            content: '';
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 30c0-10 10-20 20-20s20 10 20 20-10 20-20 20-20-10-20-20zM0 30C0 20 10 10 20 10s20 10 20 20-10 20-20 20S0 40 0 30z' fill='%23556B2F' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: -1;
+            height: 5px;
+            background: linear-gradient(90deg, var(--museum-olive), var(--museum-dark-olive));
+            border-radius: 8px 8px 0 0;
+        }
+
+        .opportunity-header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .opportunity-header h3 {
+            color: var(--museum-dark-olive);
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            letter-spacing: 0.02em;
+        }
+
+        .contact-info {
+            background: var(--museum-light-beige);
+            padding: 1.8rem;
+            border-radius: 6px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--museum-border);
+        }
+
+        .contact-info h4 {
+            color: var(--museum-dark-olive);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.6rem;
+            color: var(--museum-text);
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        .contact-info a {
+            color: var(--museum-dark-olive);
+            text-decoration: none;
+            font-weight: 500;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .opportunity-content {
+            line-height: 1.7;
+        }
+
+        .opportunity-content p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1.1rem;
+            color: var(--museum-text);
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, var(--museum-hover) 0%, var(--museum-hover) 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 30%;
+            background-position: 0 80%;
+            padding: 0.1rem 0;
+            font-weight: 500;
         }
 
         @media (max-width: 768px) {
@@ -185,24 +265,23 @@
             }
 
             .content {
-                padding: 1rem;
+                padding: 0 1rem;
+                margin: 2rem auto;
             }
 
-            .roadmap::before {
-                left: 20px;
+            .opportunity-card {
+                padding: 2rem;
             }
 
-            .goal-section {
-                margin-left: 30px;
+            .header h1 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="leaf-pattern"></div>
-    <div class="leaf-background"></div>
     <header class="header">
-        <h1>Career Goals</h1>
+        <h1>Career Interests</h1>
         <nav>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -216,32 +295,55 @@
     </header>
 
     <main class="content">
-        <section class="career-intro">
-            <h2>Career Interest</h2>
-            <p>I've always wanted my career to reflect both ambition and purpose. For me, success isn't just about titles or income—it's about having direction, making an impact, and building a life I'm proud of. My interest in finance started early, but it deepened when I took my first accounting course and realized how much I enjoy the structure, clarity, and problem-solving it offers. These experiences helped shape the goals I'm working toward today.</p>
+        <section class="intro-section">
+            <h2>Professional Career Goals</h2>
+            <p>My career aspirations are focused on applying my finance and accounting skills in meaningful healthcare and banking environments. I'm actively pursuing opportunities that align with my academic background in finance with an accounting minor, and my passion for process improvement and strategic planning. Through my involvement in BizDogs, Women in Business, and the Student Healthcare Management Association, I've developed strong leadership and collaborative skills that prepare me for professional success in customer-facing and operational finance roles.</p>
         </section>
 
-        <div class="roadmap">
-            <section class="goal-section">
-                <h2>🎯 Short-Term Goals</h2>
-                <ul class="goal-list">
-                    <li>Graduate in May 2028 with a BBA in Finance and a minor in Accounting from the University of Minnesota Duluth.</li>
-                    <li>Secure an entry-level position in finance—ideally as a financial analyst or accountant—where I can apply what I've learned and continue growing professionally.</li>
-                    <li>Build strong relationships with mentors and colleagues, and continue developing technical skills in financial analysis, reporting, and strategic planning.</li>
-                    <li>Stay open to learning, especially in areas like accounting systems, budgeting, and operational finance.</li>
-                </ul>
-                <p>These goals are about building a strong foundation—academically, professionally, and personally. I want to enter the workforce with confidence and clarity, knowing I've prepared myself well.</p>
-            </section>
+        <div class="career-opportunities">
+            <article class="opportunity-card">
+                <div class="opportunity-header">
+                    <h3>Essentia Health Finance Internship</h3>
+                </div>
 
-            <section class="goal-section">
-                <h2>🚀 Long-Term Goals</h2>
-                <ul class="goal-list">
-                    <li>Work my way up over the next 10–15 years to become a Chief Financial Officer (CFO) or hold a senior leadership role in financial strategy.</li>
-                    <li>Own a home and live in New York City, where I can be part of a fast-paced, dynamic environment that challenges and inspires me.</li>
-                    <li>Continue growing as a leader, using my skills to support ethical decision-making, smart planning, and team collaboration.</li>
-                </ul>
-                <p>I chose these goals because I've always been drawn to the energy of NYC and the idea of working in an office where I feel successful, capable, and respected. I want to do something meaningful with my life—not just professionally, but personally. Having a clear direction gives me purpose, and that's what drives me every day.</p>
-            </section>
+                <div class="contact-info">
+                    <h4>Contact Information:</h4>
+                    <p><strong>Essentia Health – St. Mary's Medical Center</strong></p>
+                    <p>Finance Department</p>
+                    <p>502 E 2nd Street, Duluth, MN 55805</p>
+                    <p>Website: <a href="https://essentiacareers.org" target="_blank">essentiacareers.org</a></p>
+                </div>
+
+                <div class="opportunity-content">
+                    <p>I'm hoping to secure a finance internship with Essentia Health during my junior year. When I spoke with a representative at the UMD career fair, they mentioned that while internships aren't posted regularly, opportunities do occasionally open up for qualified students—which makes this a promising option I'm excited to explore.</p>
+
+                    <p>Essentia's strong regional presence and <span class="highlight">mission-driven approach to healthcare</span> make it an ideal environment for applying my finance and accounting skills in a meaningful way. As a finance major with a minor in accounting, I've developed advanced proficiency in journalizing transactions, preparing multi-step income statements, and analyzing inventory systems. My attention to detail and ability to troubleshoot complex scenarios would be a strong asset in supporting financial operations within a healthcare organization.</p>
+
+                    <p>I'm also deeply interested in <span class="highlight">process improvement and strategic planning</span>, which align with the kind of work Essentia's finance team engages in. With my technical background, emotional intelligence, and collaborative mindset, I'd be a great fit for their finance department if an opportunity becomes available.</p>
+                </div>
+            </article>
+
+            <article class="opportunity-card">
+                <div class="opportunity-header">
+                    <h3>Student Banking Position</h3>
+                </div>
+
+                <div class="contact-info">
+                    <h4>Contact Information:</h4>
+                    <p><strong>North Shore Bank of Commerce</strong></p>
+                    <p>Main Office</p>
+                    <p>131 W Superior Street, Duluth, MN 55802</p>
+                    <p>Website: <a href="https://northshore.bank" target="_blank">northshore.bank</a></p>
+                </div>
+
+                <div class="opportunity-content">
+                    <p>North Shore Bank offers student positions for juniors and seniors in business majors, which I learned about during a conversation with their team at the UMD career fair. While they don't offer formal internships, these roles provide valuable hands-on experience in retail and business banking—an ideal setting for applying my finance and accounting skills in a community-focused environment.</p>
+
+                    <p>I'm especially drawn to North Shore Bank's <span class="highlight">reputation for personalized service</span> and its commitment to employee development. As someone who thrives on structure, accuracy, and authentic communication, I see strong alignment between their values and my own. My coursework has equipped me with the ability to manage financial records, analyze transactions, and support operational processes—all of which are essential in banking roles.</p>
+
+                    <p>Additionally, my involvement in <span class="highlight">BizDogs, Women in Business, and the Student Healthcare Management Association</span> has strengthened my leadership and outreach skills, preparing me to contribute professionally and positively to a customer-facing team.</p>
+                </div>
+            </article>
         </div>
     </main>
 </body>

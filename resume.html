@@ -6,39 +6,85 @@
     <title>Resume - Kirsten Prinsen</title>
     <style>
         :root {
-            --olive-green: #556B2F;
-            --soft-pink: #FFB6C1;
-            --background-color: #FAFAFA;
-            --text-color: #333333;
-            --accent-green: #98AB83;
-            --accent-pink: #F8C8DC;
+            --museum-beige: #F5F1E8;
+            --museum-cream: #FDFCF8;
+            --museum-light-beige: #F8F5F0;
+            --museum-olive: #8B9D83;
+            --museum-dark-olive: #6B7C5A;
+            --museum-text: #4A4A4A;
+            --museum-border: #D4C7B8;
+            --museum-hover: #E8E1D4;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: all 0.3s ease;
         }
 
         body {
-            font-family: 'Crimson Text', Georgia, serif;
-            background: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, var(--museum-cream) 0%, var(--museum-beige) 50%, var(--museum-light-beige) 100%);
+            color: var(--museum-text);
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(139, 157, 131, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 157, 131, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(212, 199, 184, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
         }
 
         .header {
-            background: linear-gradient(135deg, var(--olive-green), var(--accent-green));
-            color: white;
-            padding: 2rem 0;
+            background: linear-gradient(135deg, var(--museum-cream), var(--museum-beige));
+            color: var(--museum-text);
+            padding: 2.5rem 0;
             text-align: center;
+            box-shadow: 0 6px 25px rgba(139, 157, 131, 0.15);
+            border-bottom: 3px solid var(--museum-olive);
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--museum-olive), transparent);
+        }
+
+        .header h1 {
+            font-size: 3.2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: var(--museum-dark-olive);
+            text-shadow: 1px 1px 2px rgba(139, 157, 131, 0.2);
         }
 
         nav {
-            background: var(--olive-green);
-            padding: 1rem;
+            background: var(--museum-light-beige);
+            padding: 1.2rem;
             width: 100%;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 20px rgba(139, 157, 131, 0.12);
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--museum-border);
         }
 
         .nav-links {
@@ -49,92 +95,137 @@
         }
 
         .nav-links a {
-            color: white;
+            color: var(--museum-text);
             text-decoration: none;
             font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
+            padding: 0.9rem 1.8rem;
+            border-radius: 4px;
+            transition: all 0.4s ease;
+            background: var(--museum-cream);
+            border: 1px solid var(--museum-border);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            letter-spacing: 0.02em;
         }
 
         .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--museum-hover);
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 157, 131, 0.2);
+            border-color: var(--museum-olive);
+            color: var(--museum-dark-olive);
         }
 
         .resume-container {
             max-width: 900px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin: 3rem auto;
+            padding: 3.5rem;
+            background: var(--museum-cream);
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(139, 157, 131, 0.12);
+            border: 1px solid var(--museum-border);
+            position: relative;
+        }
+
+        .resume-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--museum-olive), var(--museum-dark-olive));
+            border-radius: 8px 8px 0 0;
         }
 
         .contact-info {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
+            padding: 2.5rem;
+            background: var(--museum-light-beige);
+            border-radius: 6px;
+            border: 1px solid var(--museum-border);
         }
 
-        .leaf-pattern {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.05;
-            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20c0-5 5-10 10-10s10 5 10 10-5 10-10 10-10-5-10-10z' fill='%23556B2F' fill-rule='evenodd'/%3E%3C/svg%3E");
+        .contact-info h1 {
+            color: var(--museum-dark-olive);
+            font-size: 2.8rem;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            letter-spacing: 0.02em;
+        }
+
+        .contact-info p {
+            font-size: 1.15rem;
+            color: var(--museum-text);
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
         .section {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: linear-gradient(to right, white, rgba(248, 200, 220, 0.1));
-            border-radius: 10px;
-            border-left: 4px solid var(--accent-pink);
+            margin-bottom: 3rem;
+            padding: 3rem;
+            background: var(--museum-cream);
+            border-radius: 8px;
+            border: 1px solid var(--museum-border);
             position: relative;
-            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 157, 131, 0.18);
         }
 
         .section::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -50%;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20c0-5 5-10 10-10s10 5 10 10-5 10-10 10-10-5-10-10z' fill='%23F8C8DC' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
-            background-size: 40px 40px;
-            z-index: 0;
-            pointer-events: none;
+            height: 5px;
+            background: linear-gradient(90deg, var(--museum-olive), var(--museum-dark-olive));
+            border-radius: 8px 8px 0 0;
         }
 
         .section h2 {
-            color: var(--olive-green);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+            color: var(--museum-dark-olive);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            font-weight: 600;
+            border-bottom: 2px solid var(--museum-border);
+            padding-bottom: 0.8rem;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            letter-spacing: 0.02em;
         }
 
         .experience-item {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2.5rem;
+            padding: 2rem;
+            background: var(--museum-light-beige);
+            border-radius: 6px;
+            border: 1px solid var(--museum-border);
         }
 
         .experience-item h3 {
-            color: var(--text-color);
-            margin-bottom: 0.5rem;
+            color: var(--museum-dark-olive);
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
         .experience-item .role {
-            font-weight: bold;
-            color: var(--olive-green);
+            font-weight: 600;
+            color: var(--museum-dark-olive);
+            font-size: 1.2rem;
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
         .experience-item .date-location {
-            color: #666;
+            color: var(--museum-text);
             font-style: italic;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1.2rem;
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
         .skills-list {
@@ -142,36 +233,50 @@
         }
 
         .skills-list li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
             position: relative;
+            line-height: 1.7;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: var(--museum-text);
         }
 
         .skills-list li::before {
             content: "•";
-            color: var(--accent-green);
             position: absolute;
             left: 0;
+            font-size: 1.4rem;
+            color: var(--museum-olive);
+            font-weight: bold;
         }
 
         .download-section {
             text-align: center;
-            margin-top: 2rem;
+            margin-top: 3rem;
+            padding: 2.5rem;
+            background: var(--museum-light-beige);
+            border-radius: 8px;
+            border: 1px solid var(--museum-border);
         }
 
         .download-button {
             display: inline-block;
-            padding: 1rem 2rem;
-            background: var(--olive-green);
+            padding: 1.3rem 2.8rem;
+            background: linear-gradient(135deg, var(--museum-olive), var(--museum-dark-olive));
             color: white;
             text-decoration: none;
-            border-radius: 30px;
-            transition: all 0.3s ease;
+            border-radius: 6px;
+            transition: all 0.4s ease;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 6px 20px rgba(139, 157, 131, 0.25);
+            border: 1px solid var(--museum-border);
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
         .download-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(85, 107, 47, 0.2);
+            box-shadow: 0 8px 25px rgba(139, 157, 131, 0.35);
         }
 
         @media (max-width: 768px) {
@@ -181,11 +286,19 @@
             }
 
             .resume-container {
-                padding: 1rem;
+                padding: 2rem;
             }
 
             .section {
-                padding: 1rem;
+                padding: 2rem;
+            }
+
+            .contact-info h1 {
+                font-size: 2rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -208,11 +321,11 @@
     <main class="resume-container">
         <div class="contact-info">
             <h1>Kirsten Prinsen</h1>
-            <p>785-551-3121 | kirstenprinsen09@gmail.com | Duluth, MN</p>
+            <p>📞 785-551-3121 | ✉️ kirstenprinsen09@gmail.com | 📍 Duluth, MN</p>
         </div>
 
         <section class="section">
-            <h2>Summary</h2>
+            <h2>Professional Summary</h2>
             <p>Motivated and detail-oriented Finance undergraduate, pursuing a BBA with a strong foundation in accounting principles and financial analysis. Recognized for reliability, initiative, and clear communication, consistently demonstrating accuracy, effective time management, and collaborative problem-solving in academic and work settings.</p>
         </section>
 
@@ -255,7 +368,7 @@
         </section>
 
         <section class="section">
-            <h2>Skills</h2>
+            <h2>Core Skills</h2>
             <ul class="skills-list">
                 <li>Strong analytical and problem-solving abilities</li>
                 <li>Detail-oriented with a focus on financial accuracy</li>
@@ -266,9 +379,9 @@
         </section>
 
         <section class="section">
-            <h2>Extracurricular Activities</h2>
+            <h2>Leadership & Activities</h2>
             <div class="experience-item">
-                <h3>Bizdog's Council</h3>
+                <h3>BizDog's Council</h3>
                 <div class="date-location">08/2025 - Present</div>
                 <p>Currently serving as secretary in the BizDog council to help organize events, promote leadership, and strengthen living-learning community engagement.</p>
             </div>
@@ -280,7 +393,7 @@
         </section>
 
         <div class="download-section">
-            <a href="files/Kirsten Resume (4).pdf" class="download-button" download>Download PDF Version</a>
+            <a href="files/Kirsten Resume (4).pdf" class="download-button" download>📄 Download PDF Version</a>
         </div>
     </main>
 </body>

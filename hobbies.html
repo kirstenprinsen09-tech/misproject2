@@ -6,55 +6,85 @@
     <title>My Hobbies - Kirsten Prinsen</title>
     <style>
         :root {
-            --earthy-brown: #8B4513;
-            --warm-tan: #D2B48C;
-            --light-tan: #F5DEB3;
-            --dark-brown: #654321;
-            --cream: #FFF8DC;
-            --warm-white: #FEFEFE;
-            --text-color: #2F2F2F;
-            --accent-gold: #DAA520;
+            --museum-beige: #F5F1E8;
+            --museum-cream: #FDFCF8;
+            --museum-light-beige: #F8F5F0;
+            --museum-olive: #8B9D83;
+            --museum-dark-olive: #6B7C5A;
+            --museum-text: #4A4A4A;
+            --museum-border: #D4C7B8;
+            --museum-hover: #E8E1D4;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: all 0.3s ease;
         }
 
         body {
-            font-family: 'Crimson Text', Georgia, serif;
-            background: linear-gradient(135deg, var(--light-tan), var(--cream));
-            color: var(--text-color);
-            line-height: 1.6;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, var(--museum-cream) 0%, var(--museum-beige) 50%, var(--museum-light-beige) 100%);
+            color: var(--museum-text);
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
         }
 
-        .texture-background {
+        body::before {
+            content: '';
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(139, 157, 131, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 157, 131, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(212, 199, 184, 0.02) 0%, transparent 50%);
             pointer-events: none;
             z-index: -1;
-            opacity: 0.08;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M50 25c-10 0-20 5-20 15s10 20 20 20 20-10 20-20-10-15-20-15zm0 35c-8 0-15-4-15-10s7-10 15-10 15 4 15 10-7 10-15 10z' fill='%238B4513' fill-rule='evenodd'/%3E%3C/svg%3E");
-            background-size: 100px 100px;
         }
 
         .header {
-            background: linear-gradient(135deg, var(--earthy-brown), var(--warm-tan));
-            color: white;
-            padding: 2rem 0;
+            background: linear-gradient(135deg, var(--museum-cream), var(--museum-beige));
+            color: var(--museum-text);
+            padding: 2.5rem 0;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(139, 69, 19, 0.3);
+            box-shadow: 0 6px 25px rgba(139, 157, 131, 0.15);
+            border-bottom: 3px solid var(--museum-olive);
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--museum-olive), transparent);
+        }
+
+        .header h1 {
+            font-size: 3.2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: var(--museum-dark-olive);
+            text-shadow: 1px 1px 2px rgba(139, 157, 131, 0.2);
         }
 
         nav {
-            background: var(--dark-brown);
-            padding: 1rem;
+            background: var(--museum-light-beige);
+            padding: 1.2rem;
             width: 100%;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 3px 20px rgba(139, 157, 131, 0.12);
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--museum-border);
         }
 
         .nav-links {
@@ -65,93 +95,81 @@
         }
 
         .nav-links a {
-            color: white;
+            color: var(--museum-text);
             text-decoration: none;
             font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
+            padding: 0.9rem 1.8rem;
+            border-radius: 4px;
+            transition: all 0.4s ease;
+            background: var(--museum-cream);
+            border: 1px solid var(--museum-border);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            letter-spacing: 0.02em;
         }
 
         .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: var(--museum-hover);
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 157, 131, 0.2);
+            border-color: var(--museum-olive);
+            color: var(--museum-dark-olive);
         }
 
         .content {
             max-width: 1000px;
-            margin: 2rem auto;
-            padding: 2rem;
+            margin: 3rem auto;
+            padding: 0 2rem;
         }
 
         .hobby-section {
-            background: var(--warm-white);
-            border-radius: 20px;
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 8px 30px rgba(139, 69, 19, 0.15);
-            border: 3px solid var(--warm-tan);
+            background: var(--museum-cream);
+            border-radius: 8px;
+            padding: 3.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 30px rgba(139, 157, 131, 0.12);
+            border: 1px solid var(--museum-border);
             position: relative;
         }
 
         .hobby-section::before {
             content: '';
             position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            background: linear-gradient(45deg, var(--earthy-brown), var(--warm-tan), var(--light-tan), var(--earthy-brown));
-            border-radius: 20px;
-            z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--museum-olive), var(--museum-dark-olive));
+            border-radius: 8px 8px 0 0;
         }
 
         .hobby-card {
-            background: var(--warm-white);
-            border-radius: 15px;
-            padding: 2rem;
+            background: var(--museum-cream);
+            border-radius: 8px;
+            padding: 2.5rem;
             margin-bottom: 2rem;
-            box-shadow: 0 6px 25px rgba(139, 69, 19, 0.12);
+            box-shadow: 0 6px 20px rgba(139, 157, 131, 0.08);
             display: flex;
-            gap: 2rem;
-            align-items: center;
-            border-left: 6px solid var(--accent-gold);
+            gap: 3rem;
+            align-items: flex-start;
+            border: 1px solid var(--museum-border);
             position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
         .hobby-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 35px rgba(139, 69, 19, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(139, 157, 131, 0.18);
         }
 
         .hobby-card::before {
             content: '';
             position: absolute;
             top: 0;
-            right: 0;
-            width: 150px;
-            height: 150px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cpath d='M75 37c-12 0-24 6-24 18s12 24 24 24 24-12 24-24-12-18-24-18zm0 30c-8 0-16-4-16-12s8-12 16-12 16 4 16 12-8 12-16 12z' fill='%23DAA520' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
-            opacity: 0.3;
-            transform: rotate(45deg);
-        }
-
-        .hobby-icon {
-            font-size: 2.5rem;
-            color: var(--earthy-brown);
-            background: var(--light-tan);
-            width: 80px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            flex-shrink: 0;
-            position: relative;
-            z-index: 1;
-            border: 3px solid var(--warm-tan);
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--museum-olive), var(--museum-dark-olive));
+            border-radius: 8px 8px 0 0;
         }
 
         .hobby-content {
@@ -161,17 +179,21 @@
         }
 
         .hobby-content h2 {
-            color: var(--earthy-brown);
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
+            color: var(--museum-dark-olive);
+            margin-bottom: 1.2rem;
+            font-size: 2rem;
+            font-weight: 600;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            letter-spacing: 0.02em;
         }
 
         .hobby-content p {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             line-height: 1.8;
-            color: var(--text-color);
+            color: var(--museum-text);
             text-align: justify;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
         .hobby-content p:last-child {
@@ -179,17 +201,27 @@
         }
 
         .hobby-image {
-            width: 200px;
-            height: 200px;
+            width: 350px;
+            height: 350px;
             object-fit: cover;
-            border-radius: 10px;
-            margin-left: auto;
+            border-radius: 6px;
             position: relative;
             z-index: 1;
-            background: white;
+            background: var(--museum-cream);
             padding: 1rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border: 2px solid var(--warm-tan);
+            box-shadow: 0 6px 20px rgba(139, 157, 131, 0.15);
+            border: 2px solid var(--museum-olive);
+            flex-shrink: 0;
+        }
+
+        .image-caption {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--museum-text);
+            text-align: center;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
         @media (max-width: 768px) {
@@ -199,26 +231,33 @@
             }
 
             .content {
-                padding: 1rem;
+                padding: 0 1rem;
+                margin: 2rem auto;
             }
 
             .hobby-card {
                 flex-direction: column;
                 text-align: center;
+                gap: 2rem;
             }
 
             .hobby-image {
-                margin: 1rem auto 0;
+                margin: 0 auto;
+                width: 280px;
+                height: 280px;
             }
 
             .hobby-section {
-                padding: 1.5rem;
+                padding: 2rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="texture-background"></div>
     <header class="header">
         <h1>My Hobbies</h1>
         <nav>
@@ -236,7 +275,6 @@
     <main class="content">
         <div class="hobby-section">
             <div class="hobby-card">
-                <div class="hobby-icon">🧵</div>
                 <div class="hobby-content">
                     <h2>Hand Embroidery</h2>
                     <p>My interest in embroidery started with my great-grandma. She used to do it, and even though I never learned directly from her, something about it stuck with me. I'm completely self-taught, and over time it's become one of my favorite creative outlets. I'll stitch just about anything I can print a design for—hand towels, tote bags, you name it. I like the freedom to try a little bit of everything.</p>
@@ -245,9 +283,13 @@
                 </div>
                 <img src="images/hadnembroidery.hobby.png" alt="Hand embroidery illustration" class="hobby-image">
             </div>
+            <div class="image-caption">
+                (This is a lobster I hand-embroidered onto a tote bag)
+            </div>
+        </div>
 
+        <div class="hobby-section">
             <div class="hobby-card">
-                <div class="hobby-icon">🎬</div>
                 <div class="hobby-content">
                     <h2>Movie Watching</h2>
                     <p>I can get into almost any genre of film—as long as it's not horror. What usually draws me in is a specific actor or actress, though sometimes it's just a gut feeling. I tend to know within the first fifteen minutes whether I'll love a movie, and when I do, I really love it. I don't casually enjoy films—I become obsessed. I'll watch them in every free moment I have just to get to the end, and then I'll rewatch them to catch every detail I missed.</p>
@@ -256,9 +298,13 @@
                 </div>
                 <img src="images/movies.hobby.png" alt="Movie collection illustration" class="hobby-image">
             </div>
+            <div class="image-caption">
+                (movie collection)
+            </div>
+        </div>
 
+        <div class="hobby-section">
             <div class="hobby-card">
-                <div class="hobby-icon">🤝</div>
                 <div class="hobby-content">
                     <h2>Volunteering</h2>
                     <p>Volunteering has been part of my life for as long as I can remember. I've been involved with my church since I was about ten, and it's always felt natural—whether through my own efforts or alongside my parents. It's more than just something I do; it's part of who I am.</p>
@@ -266,6 +312,9 @@
                     <p>What I enjoy most are the small moments—like seeing a parent light up as their child wins a prize at one of our events, or watching kids laugh and play during a church celebration. Those little glimpses of joy remind me why I do this. Volunteering helps me feel personally connected to my church and my community. It's also a reflection of my faith. As a Christian, I believe we're called not just to stay in our own circles, but to reach out and connect others to Christ through love, service, and compassion.</p>
                 </div>
                 <img src="images/volunteer.hobby.png" alt="Volunteering illustration" class="hobby-image">
+            </div>
+            <div class="image-caption">
+                (This was taken during a missions trip to Albania, where I joined others from my church to help support the community.)
             </div>
         </div>
     </main>
